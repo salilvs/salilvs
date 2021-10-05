@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewData["Title"] = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12">
+    <h1>PRODUCT MANAGEMENT</h1>
+    <div class="top-right-button-container">
+        @*<button type="button" class="btn btn-primary btn-lg top-right-button mr-1" data-toggle="modal" data-target="#Product-Modal">ADD NEW </button>*@
+    </div>
+    <div class="separator mb-5"></div>
+</div>
+
+<div class="col-12 mb-4 data-table-rows data-tables-hide-filter">
+    <table id="tbl_productlist" class="data-table responsive nowrap">
+        <thead>
+            <tr>
+                <th>Sl.no</th>
+                <th></th>
+                <th>Product Name</th>
+                <th>Product Quantity</th>
+                <th>Product Price</th>
+               
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div id="Product-Modal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Product Details Form</h5>
+                <button id="btnClose" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form id="productform" method="post">
+
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Product Photo</label>
+                            <div id="profile-container" class="profile-container">
+                                <img id="image1" src="../assets/img/bookit/no-image-found-360x250.png" class="viewphoto img-responsive" />
+                            </div>
+                            <input id="photo1" type="file" class="hidephoto" name="photo1" placeholder="Photo" data-parsley-filemaxmegabytes="0.5" data-parsley-trigger="change" data-parsley-filemimetypes="image/jpg,image/jpeg,image/png" required>
+                            <br />
+                            <input id="txtphoto1" type="hidden" hidden>
+                                    </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="form-group col-4">
+                            <label for="txtname">Product Name</label>
+                            <input type="text" class="form-control thresold-i" id="txtname" maxlength="500" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="txtdescription">Product Description</label>
+                            <textarea type="text" class="form-control thresold-i" id="txtdescription" maxlength="1500" required></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="form-group col-4">
+                            <label for="txtunitwt">Per Unit Weight</label>
+                            <input type="text" class="form-control thresold-i" id="txtunitwt" maxlength="500" required>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <label for="txtproductqty">Product Quantity</label>
+                            <input type="text" class="form-control" id="txtproductqty" required>
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="txtproductprice">Product Unit Price</label>
+                            <input type="text" class="form-control thresold-i" id="txtproductprice" required>
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="txtofferprice">Offer Price</label>
+                            <input type="text" class="form-control thresold-i" id="txtofferprice" maxlength="500">
+                        </div>
+                    </div>
+                  
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="btnReset" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button id="btnUpdate" type="button" class="btn btn-warning">Update changes</button>
+                <button id="btnSave" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/assets/js/page/vendor/vendorproductmanagement.js"></script>
+}

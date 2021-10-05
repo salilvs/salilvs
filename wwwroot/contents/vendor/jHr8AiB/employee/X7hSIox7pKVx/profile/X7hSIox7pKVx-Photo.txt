@@ -1,0 +1,155 @@
+USE [bookit]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_VendorBranchCreateOrUpdate]    Script Date: 21-10-2020 16:07:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: 21-10-2020
+-- Description:	Add or update [tbl_vendorBranches]
+-- =============================================
+ALTER PROCEDURE [dbo].[SP_VendorBranchCreateOrUpdate] 
+	@Vendor_Branch_Id bigint,
+	@Vendor_Id nvarchar(50),
+	@BranchName nvarchar(250),
+	@BranchDetails nvarchar(500),
+	@BranchAddress nvarchar(600),
+	@BranchEmail nvarchar(100),
+	@BranchPhone nvarchar(20),
+	@BranchMobile nvarchar(20),
+	@BranchPhoto nvarchar(1500),
+	@BranchLatitude nvarchar(50),
+	@BranchLongitude nvarchar(50),
+	@BranchStatus bit,
+	@UserId nvarchar(100),
+	@Datechanged datetime
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	DECLARE @response TABLE (Type nvarchar(150), Title nvarchar(150), Message nvarchar(150), Url nvarchar(150));
+	DECLARE @response_Type nvarchar(150), 
+			@response_Title nvarchar(150), 
+			@response_Message nvarchar(150), 
+			@response_Url nvarchar(150);
+	DECLARE @JsonResult nvarchar(MAX);
+
+
+	if(@Vendor_Branch_Id = 0)
+	BEGIN
+	INSERT INTO [dbo].[tbl_vendorBranches]
+           ([Vendor_Id]
+           ,[Vendor_Branch_Name]
+           ,[Vendor_Branch_Details]
+           ,[Vendor_Branch_Address]
+           ,[Vendor_Branch_Email]
+           ,[Vendor_Branch_Phone]
+           ,[Vendor_Branch_Mobile]
+           ,[Vendor_Branch_Photo]
+           ,[Vendor_Branch_Latitude]
+           ,[Vendor_Branch_Longitude]
+           ,[Vendor_Branch_Status]
+           ,[Vendor_Branch_Created_Date]
+           ,[Vendor_Branch_Created_By]
+           ,[Vendor_Branch_Modified_Date]
+           ,[Vendor_Branch_Modified_By])
+     VALUES
+           (@Vendor_Id
+           ,@BranchName
+           ,@BranchDetails
+           ,@BranchAddress
+           ,@BranchEmail
+           ,@BranchPhone
+           ,@BranchMobile
+           ,@BranchPhoto
+           ,@BranchLatitude
+           ,@BranchLongitude
+           ,@BranchStatus
+           ,@Datechanged
+           ,@UserId
+           ,null
+           ,null)
+	END
+	-- Update statements
+	else
+	BEGIN
+	UPDATE [dbo].[tbl_vendorBranches]
+   SET 
+       [Vendor_Branch_Name] = @BranchName
+      ,[Vendor_Branch_Details] = @BranchDetails
+      ,[Vendor_Branch_Address] = @BranchAddress
+      ,[Vendor_Branch_Email] = @BranchEmail
+      ,[Vendor_Branch_Phone] = @BranchPhone
+      ,[Vendor_Branch_Mobile] = @BranchMobile
+      ,[Vendor_Branch_Photo] = @BranchPhoto
+      ,[Vendor_Branch_Latitude] = @BranchLatitude
+      ,[Vendor_Branch_Longitude] = @BranchLongitude
+      ,[Vendor_Branch_Status] = @BranchStatus
+      ,[Vendor_Branch_Modified_Date] = @Datechanged
+      ,[Vendor_Branch_Modified_By] = @UserId
+ WHERE Vendor_Branch_Id=@Vendor_Branch_Id
+	END
+	SET @response_Type = 'Success';
+										SET @response_Title = 'Success';
+										SET @response_Message = 'Successfully saved Branch details';
+										SET @response_Url = '';
+										INSERT INTO @response VALUES (@response_Type, @response_Title, @response_Message, @response_Url);
+										SET @JsonResult = (Select * from @response FOR JSON AUTO);
+										Select @JsonResult as JsonResult;
+
+END
+
+
+
+-----------------
+USE [bookit]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_VendorBranches]    Script Date: 21-10-2020 16:11:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[SP_VendorBranches]
+	@Vendor_Id nvarchar(50)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    SELECT * FROM tbl_vendorBranches where Vendor_Id=@Vendor_Id
+END
+---------------------
+USE [bookit]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_VendorBrancheStatusUpdate]    Script Date: 21-10-2020 16:11:40 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[SP_VendorBrancheStatusUpdate]
+	@Vendor_Branch_Id bigint,
+	@Status int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    UPDATE tbl_vendorBranches SET Vendor_Branch_Status=@Status  where Vendor_Branch_Id=@Vendor_Branch_Id
+END

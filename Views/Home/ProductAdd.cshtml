@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewData["Title"] = "ProductAdd";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="~/assets/font/iconsmind-s/css/iconsminds.css" />
+    <link rel="stylesheet" href="~/assets/font/simple-line-icons/css/simple-line-icons.css" />
+
+    <link rel="stylesheet" href="~/assets/css/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/assets/css/vendor/bootstrap.rtl.only.min.css" />
+    <link rel="stylesheet" href="~/assets/css/vendor/bootstrap-float-label.min.css" />
+    <link rel="stylesheet" href="~/assets/css/main.css" />
+    <link href="~/assets/js/vendor/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" />
+    <link href="~/assets/js/vendor/parsleyjs/css/parsley.css" rel="stylesheet" />
+</head>
+
+<body class="background show-spinner no-footer">
+    <div class="fixed-background"></div>
+    <main>
+        <div class="container">
+            <div class="row h-100">
+                <div class="col-12 col-md-10 mx-auto my-auto">
+                    <div class="card auth-card">
+                    
+                        <div class="form-side">
+                          
+                            <h6 class="mb-4">Login</h6>
+                            <form id="loginform" method="post">
+                                <label class="form-group has-float-label mb-4">
+                                    <input class="form-control" type="email" id="txtitemcode"  required />
+                                    @*<input class="form-control" type="text" id="txtusername" required />*@
+                                    <span>ItemCode</span>
+                                </label>
+                                <label class="form-group has-float-label mb-4">
+                                    <input class="form-control" type="email" id="txtname"  required />
+                                    @*<input class="form-control" type="text" id="txtusername" required />*@
+                                    <span>ProductName</span>
+                                </label>
+
+                                <label class="form-group has-float-label mb-4">
+                                    <input class="form-control" placeholder="" type="text" id="txtProductQty" required />
+                                    <span>Qty</span>
+                                </label>
+                                <label class="form-group has-float-label mb-4">
+                                    <input class="form-control" placeholder="" type="text" id="txtPrice" required />
+                                    <span>Price</span>
+                                </label>
+                                <div class="d-flex justify-content-between align-items-center">
+
+                                    <button class="btn btn-primary btn-lg btn-shadow" type="button" id="btnlogin">LOGIN</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+    <script src="~/assets/js/vendor/jquery-3.3.1.min.js"></script>
+    <script src="~/assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/vendor/bootstrap-notify.min.js"></script>
+    <script src="~/assets/js/dore.script.js"></script>
+    <script src="~/assets/js/scripts.js"></script>
+    <script src="~/assets/js/vendor/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+    <script src="~/assets/js/vendor/parsleyjs/js/parsley.min.js"></script>
+    <script src="~/assets/js/page/toastnotification.js"></script>
+    <script src="~/assets/js/page/userlogin.js"></script>
+</body>
+
+</html>

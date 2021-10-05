@@ -1,0 +1,73 @@
+https://jsfiddle.net/rantoun/552y9j90/14/
+
+<table id="table1">
+  <thead>
+    <tr>
+      <th>Fruit</th>
+      <th>sumCondition</th>
+      <th># Eaten</th>
+      <th># Remaining</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th align="center">Count</th>
+      <th align="left"></th>
+      <th align="left"></th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr>
+      <td>Apples</td>
+      <td>Use</td>
+      <td>3</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>Oranges</td>
+      <td>Use</td>
+      <td>6</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Bananas</td>
+      <td>Ignore</td>
+      <td>2</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+javascript
+-=------
+$("#table1").DataTable({
+  "paging": false,
+  "searching": false,
+  "info": false,    
+	"footerCallback": function ( row, data, start, end, display ) {
+  		
+      var columns = [2, 3];
+      //console.log(data);
+      var api = this.api();
+      
+      // Get sumCondition and put in array     
+      
+      _.each(columns, function(idx) {
+
+          var total = api
+              .column(idx)
+              .data()
+              .reduce(function (a, b) {
+               		// Find index of current value for accessing sumCondition value in same row
+              		var cur_index = api.column(idx).data().indexOf(b);
+              		if (api.column(1).data()[cur_index] != "Ignore") {
+                    return parseInt(a) + parseInt(b);
+                  }
+                  else { return parseInt(a); }
+              }, 0)       	
+
+				$('tr:eq(0) th:eq('+idx+')', api.table().footer()).html(total);
+      })
+      
+  }
+});

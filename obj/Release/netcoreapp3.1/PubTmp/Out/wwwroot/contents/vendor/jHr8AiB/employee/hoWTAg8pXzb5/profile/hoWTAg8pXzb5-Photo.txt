@@ -1,0 +1,9 @@
+button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit; width: 21px; background: none;border: none;}
+
+
+    font-family: inherit;
+    width: 21px;
+    font-size: inherit;
+    line-height: inherit;
+    background: none;
+    border: none;

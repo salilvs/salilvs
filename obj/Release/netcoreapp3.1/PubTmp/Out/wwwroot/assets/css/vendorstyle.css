@@ -1,0 +1,9 @@
+.card{border-radius:6px;border:none;background:linear-gradient(134.17deg,#eef0f5 4.98%,#e6e9ef 94.88%);-webkit-box-shadow:-12px -12px 20px rgb(255 255 255 / 80%),10px 10px 24px rgb(166 180 200 / 70%);box-shadow:-12px -12px 20px rgb(255 255 255 / 80%),10px 10px 24px rgb(166 180 200 / 70%)}.btn--primary{background:#dd601a;color:#fff}.btn--green,.btn--primary:hover{background:#59ac2c;color:#fff}.table.table-striped thead th{padding:15px 5px!important;vertical-align:middle;font-size:14px}.table.table-striped tbody,thead{background:#fff}.table-striped tbody tr:nth-of-type(odd){background-color:#e4e3dc}.table.table-striped tbody tr td{padding:10px 5px!important;vertical-align:middle;font-size:12px}.appointment-information .form-control{height:45px!important;border-radius:4px;font-size:13px;font-weight:600;color:#060606;border:none!important;background:linear-gradient(134.17deg,#eef1f5 4.98%,#e6e9ef 94.88%);-webkit-box-shadow:inset -5px -5px 15px rgb(255 255 255 / 75%),inset 5px 5px 10px rgb(166 180 200 / 75%);box-shadow:inset -5px -5px 15px rgb(255 255 255 / 75%),inset 5px 5px 10px rgb(166 180 200 / 75%)}.form-group label{font-size:14px;color:#5d5d5d}.mt-25,.mt-30{margin-top:30px}.table.table-striped tbody tr td a{display:inline-block;margin-right:6px}.table.table-striped tbody tr td i{font-size:18px}.pagination{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
+.button{
+    border:none;
+}
+.menu .sub-menu ul li a span {
+    vertical-align: middle;
+    height: 16px;
+}
+/*# sourceMappingURL=vendorstyle.css.map */
